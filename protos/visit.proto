@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package app;
+
+// The greeting service definition.
+service Visit {
+  // Sends a greeting
+  rpc ProcessVisit (VisitRequest) returns (VisitResponse) {}
+}
+
+// The request message containing the user's name.
+message VisitRequest {
+  int32 index = 1;
+  repeated Dart visit = 2;
+}
+
+message Dart {
+  enum DartMultiplier {
+    MISS = 0;
+    SINGLE = 1;
+    DOUBLE = 2;
+    TREBLE = 3;
+  }
+  DartMultiplier multiplier = 1;
+  int32 segment = 2;
+}
+
+// The response message containing the greetings
+message VisitResponse {
+  int32 result = 1;
+  string message = 2;
+}
