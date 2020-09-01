@@ -32,7 +32,7 @@ class DartServer(VisitServicer):
     def ProcessVisit(self, request, context):
         print("here")
         my_visit = visit.Visit(request.visit)
-        result, response = self.match.process_visit(1, my_visit)
+        result, response = self.match.process_visit(request.index, my_visit)
         return VisitResponse(result=result, message=response)
 
 

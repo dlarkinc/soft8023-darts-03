@@ -38,7 +38,7 @@ class X01Match(MatchManager, MatchVisitTemplate):
 
         if not self.match.active:
             return False, "Game has ended."
-
+        # print(str(self.match.last_player_index) + "-" + str(player_index))
         self.match.last_player_index = player_index
         return True, None
 

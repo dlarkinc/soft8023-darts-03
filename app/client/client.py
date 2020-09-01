@@ -14,13 +14,13 @@ def run():
     my_visit = [visit_pb2.Dart(multiplier=DartMultiplier.SINGLE, segment=1),
                 visit_pb2.Dart(multiplier=DartMultiplier.SINGLE, segment=5),
                 visit_pb2.Dart(multiplier=DartMultiplier.SINGLE, segment=20)]
-    response = stub.ProcessVisit(visit_pb2.VisitRequest(index=1, visit=my_visit))
+    response = stub.ProcessVisit(visit_pb2.VisitRequest(index=0, visit=my_visit))
     print("Client received: " + response.message)
 
     my_visit = [visit_pb2.Dart(multiplier=DartMultiplier.TREBLE, segment=20),
                 visit_pb2.Dart(multiplier=DartMultiplier.TREBLE, segment=20),
                 visit_pb2.Dart(multiplier=DartMultiplier.TREBLE, segment=20)]
-    response = stub.ProcessVisit(visit_pb2.VisitRequest(index=2, visit=my_visit))
+    response = stub.ProcessVisit(visit_pb2.VisitRequest(index=1, visit=my_visit))
     print("Client received: " + response.message)
 
 
