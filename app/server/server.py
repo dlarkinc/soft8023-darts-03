@@ -4,14 +4,13 @@ from concurrent import futures
 import grpc
 
 from app.gameimpl import x01_match
-from app.visit_pb2 import VisitResponse
-from app.visit_pb2_grpc import VisitServicer, add_VisitServicer_to_server
-from datatype.enums import DartMultiplier
+from app.darts_match_pb2 import VisitResponse
+from app.darts_match_pb2_grpc import DartsMatchServicer, add_DartsMatchServicer_to_server
 from domain import darts_match, visit
 from pattern import object_factory
 
 
-class DartServer(VisitServicer):
+class DartServer(DartsMatchServicer):
 
     def __init__(self):
         print("here")
@@ -23,8 +22,8 @@ class DartServer(VisitServicer):
         x01 = factory.create('X01')
         match = darts_match.DartsMatch()
 
-        match.register_player('Alice')  # player_index = 1
-        match.register_player('Kalifa')  # player_index = 2
+        match.register_player('Alice')  # player_index = 0
+        match.register_player('Jamal')  # player_index = 1
         x01.set_match(match)
 
         self.match = x01
@@ -38,7 +37,7 @@ class DartServer(VisitServicer):
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    add_VisitServicer_to_server(DartServer(), server)
+    add_DartsMatchServicer_to_server(DartServer(), server)
     server.add_insecure_port('[::]:50055')
     server.start()
     server.wait_for_termination()

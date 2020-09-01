@@ -2,11 +2,12 @@ syntax = "proto3";
 
 package app;
 
-// The greeting service definition.
-service Visit {
-  // Sends a greeting
+service DartsMatch {
+  //rpc CreateMatch (MatchRequest) return (MatchResponse) {}
+  //rpc RegisterPlayer (RegisterRequest) returns (RegisterResponse) {}
   rpc ProcessVisit (VisitRequest) returns (VisitResponse) {}
 }
+
 
 // The request message containing the user's name.
 message VisitRequest {
