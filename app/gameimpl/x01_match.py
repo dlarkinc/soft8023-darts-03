@@ -33,7 +33,7 @@ class X01Match(MatchManager, MatchVisitTemplate):
             self.averages.append(None)
 
     def validate_visit(self, player_index, visit):
-        if self.match.last_player_index is player_index:
+        if self.match.last_player_index is player_index:  # Note: this won't work properly for 3 players...
             return False, "Player " + str(player_index + 1) + " is not in the correct sequence. Visit ignored."
 
         if not self.match.active:
@@ -58,6 +58,7 @@ class X01Match(MatchManager, MatchVisitTemplate):
                 self.match.active = False
                 return i
             else:
+                print("deducting for " + str(player_index))
                 self.scores[player_index] -= dart.get_score()
 
         return 0

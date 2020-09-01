@@ -14,6 +14,16 @@ class DartsMatchStub(object):
         Args:
             channel: A grpc.Channel.
         """
+        self.RegisterPlayer = channel.unary_unary(
+                '/app.DartsMatch/RegisterPlayer',
+                request_serializer=darts__match__pb2.RegisterRequest.SerializeToString,
+                response_deserializer=darts__match__pb2.RegisterResponse.FromString,
+                )
+        self.FinalizeMatch = channel.unary_unary(
+                '/app.DartsMatch/FinalizeMatch',
+                request_serializer=darts__match__pb2.FinalizeRequest.SerializeToString,
+                response_deserializer=darts__match__pb2.FinalizeResponse.FromString,
+                )
         self.ProcessVisit = channel.unary_unary(
                 '/app.DartsMatch/ProcessVisit',
                 request_serializer=darts__match__pb2.VisitRequest.SerializeToString,
@@ -24,10 +34,21 @@ class DartsMatchStub(object):
 class DartsMatchServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def ProcessVisit(self, request, context):
+    def RegisterPlayer(self, request, context):
         """rpc CreateMatch (MatchRequest) return (MatchResponse) {}
-        rpc RegisterPlayer (RegisterRequest) returns (RegisterResponse) {}
         """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def FinalizeMatch(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def ProcessVisit(self, request, context):
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -35,6 +56,16 @@ class DartsMatchServicer(object):
 
 def add_DartsMatchServicer_to_server(servicer, server):
     rpc_method_handlers = {
+            'RegisterPlayer': grpc.unary_unary_rpc_method_handler(
+                    servicer.RegisterPlayer,
+                    request_deserializer=darts__match__pb2.RegisterRequest.FromString,
+                    response_serializer=darts__match__pb2.RegisterResponse.SerializeToString,
+            ),
+            'FinalizeMatch': grpc.unary_unary_rpc_method_handler(
+                    servicer.FinalizeMatch,
+                    request_deserializer=darts__match__pb2.FinalizeRequest.FromString,
+                    response_serializer=darts__match__pb2.FinalizeResponse.SerializeToString,
+            ),
             'ProcessVisit': grpc.unary_unary_rpc_method_handler(
                     servicer.ProcessVisit,
                     request_deserializer=darts__match__pb2.VisitRequest.FromString,
@@ -49,6 +80,40 @@ def add_DartsMatchServicer_to_server(servicer, server):
  # This class is part of an EXPERIMENTAL API.
 class DartsMatch(object):
     """Missing associated documentation comment in .proto file."""
+
+    @staticmethod
+    def RegisterPlayer(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/app.DartsMatch/RegisterPlayer',
+            darts__match__pb2.RegisterRequest.SerializeToString,
+            darts__match__pb2.RegisterResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def FinalizeMatch(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/app.DartsMatch/FinalizeMatch',
+            darts__match__pb2.FinalizeRequest.SerializeToString,
+            darts__match__pb2.FinalizeResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def ProcessVisit(request,

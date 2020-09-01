@@ -4,12 +4,27 @@ package app;
 
 service DartsMatch {
   //rpc CreateMatch (MatchRequest) return (MatchResponse) {}
-  //rpc RegisterPlayer (RegisterRequest) returns (RegisterResponse) {}
-  rpc ProcessVisit (VisitRequest) returns (VisitResponse) {}
+  rpc RegisterPlayer(RegisterRequest) returns (RegisterResponse) {}
+  rpc FinalizeMatch(FinalizeRequest) returns (FinalizeResponse) {}
+  rpc ProcessVisit(VisitRequest) returns (VisitResponse) {}
 }
 
 
 // The request message containing the user's name.
+message RegisterRequest {
+  string name = 1;
+}
+
+message RegisterResponse {
+  int32 playerIndex = 1;
+}
+
+message FinalizeRequest {
+}
+
+message FinalizeResponse {
+}
+
 message VisitRequest {
   int32 index = 1;
   repeated Dart visit = 2;
