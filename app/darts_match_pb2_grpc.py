@@ -14,6 +14,11 @@ class DartsMatchStub(object):
         Args:
             channel: A grpc.Channel.
         """
+        self.CreateMatch = channel.unary_unary(
+                '/app.DartsMatch/CreateMatch',
+                request_serializer=darts__match__pb2.MatchRequest.SerializeToString,
+                response_deserializer=darts__match__pb2.MatchResponse.FromString,
+                )
         self.RegisterPlayer = channel.unary_unary(
                 '/app.DartsMatch/RegisterPlayer',
                 request_serializer=darts__match__pb2.RegisterRequest.SerializeToString,
@@ -34,9 +39,14 @@ class DartsMatchStub(object):
 class DartsMatchServicer(object):
     """Missing associated documentation comment in .proto file."""
 
+    def CreateMatch(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def RegisterPlayer(self, request, context):
-        """rpc CreateMatch (MatchRequest) return (MatchResponse) {}
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -56,6 +66,11 @@ class DartsMatchServicer(object):
 
 def add_DartsMatchServicer_to_server(servicer, server):
     rpc_method_handlers = {
+            'CreateMatch': grpc.unary_unary_rpc_method_handler(
+                    servicer.CreateMatch,
+                    request_deserializer=darts__match__pb2.MatchRequest.FromString,
+                    response_serializer=darts__match__pb2.MatchResponse.SerializeToString,
+            ),
             'RegisterPlayer': grpc.unary_unary_rpc_method_handler(
                     servicer.RegisterPlayer,
                     request_deserializer=darts__match__pb2.RegisterRequest.FromString,
@@ -80,6 +95,23 @@ def add_DartsMatchServicer_to_server(servicer, server):
  # This class is part of an EXPERIMENTAL API.
 class DartsMatch(object):
     """Missing associated documentation comment in .proto file."""
+
+    @staticmethod
+    def CreateMatch(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/app.DartsMatch/CreateMatch',
+            darts__match__pb2.MatchRequest.SerializeToString,
+            darts__match__pb2.MatchResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def RegisterPlayer(request,

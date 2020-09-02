@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x11\x64\x61rts_match.proto\x12\x03\x61pp\"\x1f\n\x0fRegisterRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\'\n\x10RegisterResponse\x12\x13\n\x0bplayerIndex\x18\x01 \x01(\x05\"\x11\n\x0f\x46inalizeRequest\"\x12\n\x10\x46inalizeResponse\"7\n\x0cVisitRequest\x12\r\n\x05index\x18\x01 \x01(\x05\x12\x18\n\x05visit\x18\x02 \x03(\x0b\x32\t.app.Dart\"\x85\x01\n\x04\x44\x61rt\x12,\n\nmultiplier\x18\x01 \x01(\x0e\x32\x18.app.Dart.DartMultiplier\x12\x0f\n\x07segment\x18\x02 \x01(\x05\">\n\x0e\x44\x61rtMultiplier\x12\x08\n\x04MISS\x10\x00\x12\n\n\x06SINGLE\x10\x01\x12\n\n\x06\x44OUBLE\x10\x02\x12\n\n\x06TREBLE\x10\x03\"0\n\rVisitResponse\x12\x0e\n\x06result\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t2\xc6\x01\n\nDartsMatch\x12?\n\x0eRegisterPlayer\x12\x14.app.RegisterRequest\x1a\x15.app.RegisterResponse\"\x00\x12>\n\rFinalizeMatch\x12\x14.app.FinalizeRequest\x1a\x15.app.FinalizeResponse\"\x00\x12\x37\n\x0cProcessVisit\x12\x11.app.VisitRequest\x1a\x12.app.VisitResponse\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x11\x64\x61rts_match.proto\x12\x03\x61pp\"3\n\x0cMatchRequest\x12\x10\n\x08userName\x18\x01 \x01(\t\x12\x11\n\tmatchType\x18\x02 \x01(\t\" \n\rMatchResponse\x12\x0f\n\x07matchId\x18\x01 \x01(\x0c\"4\n\x0fRegisterRequest\x12\x0f\n\x07matchId\x18\x01 \x01(\x0c\x12\x10\n\x08userName\x18\x02 \x01(\t\"\'\n\x10RegisterResponse\x12\x13\n\x0bplayerIndex\x18\x01 \x01(\x05\"\"\n\x0f\x46inalizeRequest\x12\x0f\n\x07matchId\x18\x01 \x01(\x0c\"\x12\n\x10\x46inalizeResponse\"\x85\x01\n\x04\x44\x61rt\x12,\n\nmultiplier\x18\x01 \x01(\x0e\x32\x18.app.Dart.DartMultiplier\x12\x0f\n\x07segment\x18\x02 \x01(\x05\">\n\x0e\x44\x61rtMultiplier\x12\x08\n\x04MISS\x10\x00\x12\n\n\x06SINGLE\x10\x01\x12\n\n\x06\x44OUBLE\x10\x02\x12\n\n\x06TREBLE\x10\x03\"N\n\x0cVisitRequest\x12\x0f\n\x07matchId\x18\x01 \x01(\x0c\x12\x13\n\x0bplayerIndex\x18\x02 \x01(\x05\x12\x18\n\x05visit\x18\x03 \x03(\x0b\x32\t.app.Dart\"0\n\rVisitResponse\x12\x0e\n\x06result\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t2\xfe\x01\n\nDartsMatch\x12\x36\n\x0b\x43reateMatch\x12\x11.app.MatchRequest\x1a\x12.app.MatchResponse\"\x00\x12?\n\x0eRegisterPlayer\x12\x14.app.RegisterRequest\x1a\x15.app.RegisterResponse\"\x00\x12>\n\rFinalizeMatch\x12\x14.app.FinalizeRequest\x1a\x15.app.FinalizeResponse\"\x00\x12\x37\n\x0cProcessVisit\x12\x11.app.VisitRequest\x1a\x12.app.VisitResponse\"\x00\x62\x06proto3'
 )
 
 
@@ -54,23 +54,30 @@ _DART_DARTMULTIPLIER = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=268,
-  serialized_end=330,
+  serialized_start=336,
+  serialized_end=398,
 )
 _sym_db.RegisterEnumDescriptor(_DART_DARTMULTIPLIER)
 
 
-_REGISTERREQUEST = _descriptor.Descriptor(
-  name='RegisterRequest',
-  full_name='app.RegisterRequest',
+_MATCHREQUEST = _descriptor.Descriptor(
+  name='MatchRequest',
+  full_name='app.MatchRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='name', full_name='app.RegisterRequest.name', index=0,
+      name='userName', full_name='app.MatchRequest.userName', index=0,
       number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='matchType', full_name='app.MatchRequest.matchType', index=1,
+      number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -88,7 +95,78 @@ _REGISTERREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=26,
-  serialized_end=57,
+  serialized_end=77,
+)
+
+
+_MATCHRESPONSE = _descriptor.Descriptor(
+  name='MatchResponse',
+  full_name='app.MatchResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='matchId', full_name='app.MatchResponse.matchId', index=0,
+      number=1, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=79,
+  serialized_end=111,
+)
+
+
+_REGISTERREQUEST = _descriptor.Descriptor(
+  name='RegisterRequest',
+  full_name='app.RegisterRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='matchId', full_name='app.RegisterRequest.matchId', index=0,
+      number=1, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='userName', full_name='app.RegisterRequest.userName', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=113,
+  serialized_end=165,
 )
 
 
@@ -119,8 +197,8 @@ _REGISTERRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=59,
-  serialized_end=98,
+  serialized_start=167,
+  serialized_end=206,
 )
 
 
@@ -132,6 +210,13 @@ _FINALIZEREQUEST = _descriptor.Descriptor(
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
+    _descriptor.FieldDescriptor(
+      name='matchId', full_name='app.FinalizeRequest.matchId', index=0,
+      number=1, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -144,8 +229,8 @@ _FINALIZEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=100,
-  serialized_end=117,
+  serialized_start=208,
+  serialized_end=242,
 )
 
 
@@ -169,47 +254,8 @@ _FINALIZERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=119,
-  serialized_end=137,
-)
-
-
-_VISITREQUEST = _descriptor.Descriptor(
-  name='VisitRequest',
-  full_name='app.VisitRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='index', full_name='app.VisitRequest.index', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='visit', full_name='app.VisitRequest.visit', index=1,
-      number=2, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=139,
-  serialized_end=194,
+  serialized_start=244,
+  serialized_end=262,
 )
 
 
@@ -248,8 +294,54 @@ _DART = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=197,
-  serialized_end=330,
+  serialized_start=265,
+  serialized_end=398,
+)
+
+
+_VISITREQUEST = _descriptor.Descriptor(
+  name='VisitRequest',
+  full_name='app.VisitRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='matchId', full_name='app.VisitRequest.matchId', index=0,
+      number=1, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='playerIndex', full_name='app.VisitRequest.playerIndex', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='visit', full_name='app.VisitRequest.visit', index=2,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=400,
+  serialized_end=478,
 )
 
 
@@ -287,21 +379,37 @@ _VISITRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=332,
-  serialized_end=380,
+  serialized_start=480,
+  serialized_end=528,
 )
 
-_VISITREQUEST.fields_by_name['visit'].message_type = _DART
 _DART.fields_by_name['multiplier'].enum_type = _DART_DARTMULTIPLIER
 _DART_DARTMULTIPLIER.containing_type = _DART
+_VISITREQUEST.fields_by_name['visit'].message_type = _DART
+DESCRIPTOR.message_types_by_name['MatchRequest'] = _MATCHREQUEST
+DESCRIPTOR.message_types_by_name['MatchResponse'] = _MATCHRESPONSE
 DESCRIPTOR.message_types_by_name['RegisterRequest'] = _REGISTERREQUEST
 DESCRIPTOR.message_types_by_name['RegisterResponse'] = _REGISTERRESPONSE
 DESCRIPTOR.message_types_by_name['FinalizeRequest'] = _FINALIZEREQUEST
 DESCRIPTOR.message_types_by_name['FinalizeResponse'] = _FINALIZERESPONSE
-DESCRIPTOR.message_types_by_name['VisitRequest'] = _VISITREQUEST
 DESCRIPTOR.message_types_by_name['Dart'] = _DART
+DESCRIPTOR.message_types_by_name['VisitRequest'] = _VISITREQUEST
 DESCRIPTOR.message_types_by_name['VisitResponse'] = _VISITRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
+
+MatchRequest = _reflection.GeneratedProtocolMessageType('MatchRequest', (_message.Message,), {
+  'DESCRIPTOR' : _MATCHREQUEST,
+  '__module__' : 'darts_match_pb2'
+  # @@protoc_insertion_point(class_scope:app.MatchRequest)
+  })
+_sym_db.RegisterMessage(MatchRequest)
+
+MatchResponse = _reflection.GeneratedProtocolMessageType('MatchResponse', (_message.Message,), {
+  'DESCRIPTOR' : _MATCHRESPONSE,
+  '__module__' : 'darts_match_pb2'
+  # @@protoc_insertion_point(class_scope:app.MatchResponse)
+  })
+_sym_db.RegisterMessage(MatchResponse)
 
 RegisterRequest = _reflection.GeneratedProtocolMessageType('RegisterRequest', (_message.Message,), {
   'DESCRIPTOR' : _REGISTERREQUEST,
@@ -331,19 +439,19 @@ FinalizeResponse = _reflection.GeneratedProtocolMessageType('FinalizeResponse', 
   })
 _sym_db.RegisterMessage(FinalizeResponse)
 
-VisitRequest = _reflection.GeneratedProtocolMessageType('VisitRequest', (_message.Message,), {
-  'DESCRIPTOR' : _VISITREQUEST,
-  '__module__' : 'darts_match_pb2'
-  # @@protoc_insertion_point(class_scope:app.VisitRequest)
-  })
-_sym_db.RegisterMessage(VisitRequest)
-
 Dart = _reflection.GeneratedProtocolMessageType('Dart', (_message.Message,), {
   'DESCRIPTOR' : _DART,
   '__module__' : 'darts_match_pb2'
   # @@protoc_insertion_point(class_scope:app.Dart)
   })
 _sym_db.RegisterMessage(Dart)
+
+VisitRequest = _reflection.GeneratedProtocolMessageType('VisitRequest', (_message.Message,), {
+  'DESCRIPTOR' : _VISITREQUEST,
+  '__module__' : 'darts_match_pb2'
+  # @@protoc_insertion_point(class_scope:app.VisitRequest)
+  })
+_sym_db.RegisterMessage(VisitRequest)
 
 VisitResponse = _reflection.GeneratedProtocolMessageType('VisitResponse', (_message.Message,), {
   'DESCRIPTOR' : _VISITRESPONSE,
@@ -361,13 +469,23 @@ _DARTSMATCH = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=383,
-  serialized_end=581,
+  serialized_start=531,
+  serialized_end=785,
   methods=[
+  _descriptor.MethodDescriptor(
+    name='CreateMatch',
+    full_name='app.DartsMatch.CreateMatch',
+    index=0,
+    containing_service=None,
+    input_type=_MATCHREQUEST,
+    output_type=_MATCHRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
   _descriptor.MethodDescriptor(
     name='RegisterPlayer',
     full_name='app.DartsMatch.RegisterPlayer',
-    index=0,
+    index=1,
     containing_service=None,
     input_type=_REGISTERREQUEST,
     output_type=_REGISTERRESPONSE,
@@ -377,7 +495,7 @@ _DARTSMATCH = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='FinalizeMatch',
     full_name='app.DartsMatch.FinalizeMatch',
-    index=1,
+    index=2,
     containing_service=None,
     input_type=_FINALIZEREQUEST,
     output_type=_FINALIZERESPONSE,
@@ -387,7 +505,7 @@ _DARTSMATCH = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='ProcessVisit',
     full_name='app.DartsMatch.ProcessVisit',
-    index=2,
+    index=3,
     containing_service=None,
     input_type=_VISITREQUEST,
     output_type=_VISITRESPONSE,

@@ -3,16 +3,25 @@ syntax = "proto3";
 package app;
 
 service DartsMatch {
-  //rpc CreateMatch (MatchRequest) return (MatchResponse) {}
+  rpc CreateMatch (MatchRequest) returns (MatchResponse) {}
   rpc RegisterPlayer(RegisterRequest) returns (RegisterResponse) {}
   rpc FinalizeMatch(FinalizeRequest) returns (FinalizeResponse) {}
   rpc ProcessVisit(VisitRequest) returns (VisitResponse) {}
 }
 
+message MatchRequest {
+  string userName = 1;
+  string matchType = 2;
+}
+
+message MatchResponse {
+  bytes matchId = 1;
+}
 
 // The request message containing the user's name.
 message RegisterRequest {
-  string name = 1;
+  bytes matchId = 1;
+  string userName = 2;
 }
 
 message RegisterResponse {
@@ -20,14 +29,10 @@ message RegisterResponse {
 }
 
 message FinalizeRequest {
+  bytes matchId = 1;
 }
 
 message FinalizeResponse {
-}
-
-message VisitRequest {
-  int32 index = 1;
-  repeated Dart visit = 2;
 }
 
 message Dart {
@@ -39,6 +44,12 @@ message Dart {
   }
   DartMultiplier multiplier = 1;
   int32 segment = 2;
+}
+
+message VisitRequest {
+  bytes matchId = 1;
+  int32 playerIndex = 2;
+  repeated Dart visit = 3;
 }
 
 // The response message containing the greetings
