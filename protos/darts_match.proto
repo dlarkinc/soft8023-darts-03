@@ -7,6 +7,8 @@ service DartsMatch {
   rpc RegisterPlayer(RegisterRequest) returns (RegisterResponse) {}
   rpc FinalizeMatch(FinalizeRequest) returns (FinalizeResponse) {}
   rpc ProcessVisit(VisitRequest) returns (VisitResponse) {}
+  rpc ListMatches(ListRequest) returns (ListResponse) {}
+  rpc WatchMatch(WatchRequest) returns (stream WatchResponse) {}
 }
 
 message MatchRequest {
@@ -56,4 +58,34 @@ message VisitRequest {
 message VisitResponse {
   int32 result = 1;
   string message = 2;
+}
+
+message ListRequest {
+  bytes matchId = 1;
+  int32 playerIndex = 2;
+  repeated Dart visit = 3;
+}
+
+message Player {
+  string userName = 1;
+  int32 playerIndex = 2;
+}
+
+message Match {
+  repeated Player players = 1;
+}
+
+// The response message containing the greetings
+message ListResponse {
+  repeated Match matches = 1;
+}
+
+message WatchRequest {
+//  bytes matchId = 1;
+}
+
+message WatchResponse {
+  Player player = 1;
+  repeated Dart darts = 2;
+  int32 score = 3;
 }

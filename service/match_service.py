@@ -11,7 +11,7 @@ class MatchManager(ABC):
         # self.post_init()    # initialise whatever is specific to the match type
 
     def end_match(self):
-        self.match.active = False
+        self.match.status = False
 
     def finalize_setup(self):
         """When the last player has been registered and the match is ready to go, do some final initialisation

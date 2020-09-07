@@ -34,6 +34,16 @@ class DartsMatchStub(object):
                 request_serializer=darts__match__pb2.VisitRequest.SerializeToString,
                 response_deserializer=darts__match__pb2.VisitResponse.FromString,
                 )
+        self.ListMatches = channel.unary_unary(
+                '/app.DartsMatch/ListMatches',
+                request_serializer=darts__match__pb2.ListRequest.SerializeToString,
+                response_deserializer=darts__match__pb2.ListResponse.FromString,
+                )
+        self.WatchMatch = channel.unary_stream(
+                '/app.DartsMatch/WatchMatch',
+                request_serializer=darts__match__pb2.WatchRequest.SerializeToString,
+                response_deserializer=darts__match__pb2.WatchResponse.FromString,
+                )
 
 
 class DartsMatchServicer(object):
@@ -63,6 +73,18 @@ class DartsMatchServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def ListMatches(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def WatchMatch(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_DartsMatchServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -85,6 +107,16 @@ def add_DartsMatchServicer_to_server(servicer, server):
                     servicer.ProcessVisit,
                     request_deserializer=darts__match__pb2.VisitRequest.FromString,
                     response_serializer=darts__match__pb2.VisitResponse.SerializeToString,
+            ),
+            'ListMatches': grpc.unary_unary_rpc_method_handler(
+                    servicer.ListMatches,
+                    request_deserializer=darts__match__pb2.ListRequest.FromString,
+                    response_serializer=darts__match__pb2.ListResponse.SerializeToString,
+            ),
+            'WatchMatch': grpc.unary_stream_rpc_method_handler(
+                    servicer.WatchMatch,
+                    request_deserializer=darts__match__pb2.WatchRequest.FromString,
+                    response_serializer=darts__match__pb2.WatchResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -161,5 +193,39 @@ class DartsMatch(object):
         return grpc.experimental.unary_unary(request, target, '/app.DartsMatch/ProcessVisit',
             darts__match__pb2.VisitRequest.SerializeToString,
             darts__match__pb2.VisitResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def ListMatches(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/app.DartsMatch/ListMatches',
+            darts__match__pb2.ListRequest.SerializeToString,
+            darts__match__pb2.ListResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def WatchMatch(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/app.DartsMatch/WatchMatch',
+            darts__match__pb2.WatchRequest.SerializeToString,
+            darts__match__pb2.WatchResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

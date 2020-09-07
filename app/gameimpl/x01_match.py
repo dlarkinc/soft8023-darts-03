@@ -1,6 +1,6 @@
 from service.match_service import MatchVisitTemplate
 from service.match_service import MatchManager
-from datatype.enums import DartMultiplier
+from datatype.enums import DartMultiplier, MatchStatus
 
 CHECKOUTS = {
     170: "T20 T20 Bull",
@@ -31,13 +31,14 @@ class X01Match(MatchManager, MatchVisitTemplate):
             self.scores.append(STARTING_TOTAL)  # Might want to parameterize the starting total
             self.first9.append(None)
             self.averages.append(None)
+        self.match.status = MatchStatus.IN_PROGRESS
 
     def validate_visit(self, player_index, visit):
         if self.match.last_player_index is player_index:  # Note: this won't work properly for 3 players...
             return False, "Player " + str(player_index + 1) + " is not in the correct sequence. Visit ignored."
 
-        if not self.match.active:
-            return False, "Game has ended."
+        if self.match.status is not MatchStatus.IN_PROGRESS:
+            return False, "Game is not in progress."
         # print(str(self.match.last_player_index) + "-" + str(player_index))
         self.match.last_player_index = player_index
         return True, None
@@ -55,7 +56,7 @@ class X01Match(MatchManager, MatchVisitTemplate):
             if dart.multiplier == DartMultiplier.DOUBLE and self.scores[player_index] - dart.get_score() == 0:
                 # game, shot!
                 self.scores[player_index] = 0
-                self.match.active = False
+                self.match.status = MatchStatus.FINISHED
                 return i
             else:
                 print("deducting for " + str(player_index))
@@ -111,7 +112,8 @@ class X01Match(MatchManager, MatchVisitTemplate):
 
 class X01MatchBuilder:
     """
-    This could be extended to include dynamic key-value pair parameters, or make it a singleton, etc.
+    This could be extended to include dynamic key-value pair parameters (see object_factory.py),
+    or make it a singleton, etc.
     """
     def __init__(self):
         pass

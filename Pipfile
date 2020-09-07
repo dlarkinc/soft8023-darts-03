@@ -9,6 +9,7 @@ verify_ssl = true
 tinydb = "*"
 grpcio = "*"
 googleapis-common-protos = "*"
+wxPython = "*"
 
 [requires]
 python_version = "3.6"

@@ -1,13 +1,17 @@
 import logging
+import time
 from concurrent import futures
 
 import grpc
 import uuid
 
 from app.gameimpl import x01_match
-from app.darts_match_pb2 import VisitResponse, RegisterResponse, FinalizeResponse, MatchResponse
+from app.darts_match_pb2 import VisitResponse, RegisterResponse, FinalizeResponse, MatchResponse, \
+    WatchResponse, Player, Dart
 from app.darts_match_pb2_grpc import DartsMatchServicer, add_DartsMatchServicer_to_server
 from app.server.match_registry import MatchRegistry
+from datatype.enums import DartMultiplier
+from datetime import datetime
 from domain import darts_match, visit
 from pattern import object_factory
 
@@ -54,7 +58,49 @@ class DartServer(DartsMatchServicer):
         match.register_player(request.userName)
         new_match.set_match(match)
         match_id = self.registry.add_match(new_match)
+        print("Created match: " + str(match_id.bytes))
         return MatchResponse(matchId=match_id.bytes)
+
+    def WatchMatch(self, request, context):
+        timestamp = datetime.now()
+        # get through any older visits
+        my_uuid = list(MatchRegistry.get_instance().matches.keys())[0].bytes  # temporary - just get first uuid
+        # match = self.registry.get_match(request.matchId)
+        match = self.registry.get_match(my_uuid)
+        for v in range(0, len(match.match.visits[0])):
+            for p in range(0, len(match.match.players)):
+                while len(match.match.visits[p]) < len(match.match.visits[0]):
+                    # we may need to wait for the next player to catch up on visits
+                    time.sleep(1)
+                my_visit = match.match.visits[p][v]
+                yield WatchResponse(player=Player(userName=match.match.players[p], playerIndex=p),
+                                    darts=[Dart(multiplier=my_visit.darts[0].multiplier,
+                                                segment=my_visit.darts[0].segment),
+                                           Dart(multiplier=my_visit.darts[1].multiplier,
+                                                segment=my_visit.darts[1].segment),
+                                           Dart(multiplier=my_visit.darts[2].multiplier,
+                                                segment=my_visit.darts[2].segment)],
+                                    score=0)  # It would be nice to provide more than just the darts thrown
+
+        # Now start watching new visits
+        while True:
+            if len(match.match.visits[0]) > v + 1:
+                y = len(match.match.visits[0])
+                for x in range(v + 1, y):
+                    for p in range(0, len(match.match.players)):
+                        while len(match.match.visits[p]) < y:
+                            # we may need to wait for the next player to catch up on visits
+                            time.sleep(1)
+                        yield WatchResponse(player=Player(userName=match.match.players[p], playerIndex=p),
+                                            darts=[Dart(multiplier=match.match.visits[p][x].darts[0].multiplier,
+                                                        segment=match.match.visits[p][x].darts[0].segment),
+                                                   Dart(multiplier=match.match.visits[p][x].darts[1].multiplier,
+                                                        segment=match.match.visits[p][x].darts[1].segment),
+                                                   Dart(multiplier=match.match.visits[p][x].darts[2].multiplier,
+                                                        segment=match.match.visits[p][x].darts[2].segment)],
+                                            score=0)
+                v = y - 1
+            time.sleep(1)
 
 
 def serve():

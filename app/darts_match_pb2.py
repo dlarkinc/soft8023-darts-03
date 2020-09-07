@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x11\x64\x61rts_match.proto\x12\x03\x61pp\"3\n\x0cMatchRequest\x12\x10\n\x08userName\x18\x01 \x01(\t\x12\x11\n\tmatchType\x18\x02 \x01(\t\" \n\rMatchResponse\x12\x0f\n\x07matchId\x18\x01 \x01(\x0c\"4\n\x0fRegisterRequest\x12\x0f\n\x07matchId\x18\x01 \x01(\x0c\x12\x10\n\x08userName\x18\x02 \x01(\t\"\'\n\x10RegisterResponse\x12\x13\n\x0bplayerIndex\x18\x01 \x01(\x05\"\"\n\x0f\x46inalizeRequest\x12\x0f\n\x07matchId\x18\x01 \x01(\x0c\"\x12\n\x10\x46inalizeResponse\"\x85\x01\n\x04\x44\x61rt\x12,\n\nmultiplier\x18\x01 \x01(\x0e\x32\x18.app.Dart.DartMultiplier\x12\x0f\n\x07segment\x18\x02 \x01(\x05\">\n\x0e\x44\x61rtMultiplier\x12\x08\n\x04MISS\x10\x00\x12\n\n\x06SINGLE\x10\x01\x12\n\n\x06\x44OUBLE\x10\x02\x12\n\n\x06TREBLE\x10\x03\"N\n\x0cVisitRequest\x12\x0f\n\x07matchId\x18\x01 \x01(\x0c\x12\x13\n\x0bplayerIndex\x18\x02 \x01(\x05\x12\x18\n\x05visit\x18\x03 \x03(\x0b\x32\t.app.Dart\"0\n\rVisitResponse\x12\x0e\n\x06result\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t2\xfe\x01\n\nDartsMatch\x12\x36\n\x0b\x43reateMatch\x12\x11.app.MatchRequest\x1a\x12.app.MatchResponse\"\x00\x12?\n\x0eRegisterPlayer\x12\x14.app.RegisterRequest\x1a\x15.app.RegisterResponse\"\x00\x12>\n\rFinalizeMatch\x12\x14.app.FinalizeRequest\x1a\x15.app.FinalizeResponse\"\x00\x12\x37\n\x0cProcessVisit\x12\x11.app.VisitRequest\x1a\x12.app.VisitResponse\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x11\x64\x61rts_match.proto\x12\x03\x61pp\"3\n\x0cMatchRequest\x12\x10\n\x08userName\x18\x01 \x01(\t\x12\x11\n\tmatchType\x18\x02 \x01(\t\" \n\rMatchResponse\x12\x0f\n\x07matchId\x18\x01 \x01(\x0c\"4\n\x0fRegisterRequest\x12\x0f\n\x07matchId\x18\x01 \x01(\x0c\x12\x10\n\x08userName\x18\x02 \x01(\t\"\'\n\x10RegisterResponse\x12\x13\n\x0bplayerIndex\x18\x01 \x01(\x05\"\"\n\x0f\x46inalizeRequest\x12\x0f\n\x07matchId\x18\x01 \x01(\x0c\"\x12\n\x10\x46inalizeResponse\"\x85\x01\n\x04\x44\x61rt\x12,\n\nmultiplier\x18\x01 \x01(\x0e\x32\x18.app.Dart.DartMultiplier\x12\x0f\n\x07segment\x18\x02 \x01(\x05\">\n\x0e\x44\x61rtMultiplier\x12\x08\n\x04MISS\x10\x00\x12\n\n\x06SINGLE\x10\x01\x12\n\n\x06\x44OUBLE\x10\x02\x12\n\n\x06TREBLE\x10\x03\"N\n\x0cVisitRequest\x12\x0f\n\x07matchId\x18\x01 \x01(\x0c\x12\x13\n\x0bplayerIndex\x18\x02 \x01(\x05\x12\x18\n\x05visit\x18\x03 \x03(\x0b\x32\t.app.Dart\"0\n\rVisitResponse\x12\x0e\n\x06result\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\"M\n\x0bListRequest\x12\x0f\n\x07matchId\x18\x01 \x01(\x0c\x12\x13\n\x0bplayerIndex\x18\x02 \x01(\x05\x12\x18\n\x05visit\x18\x03 \x03(\x0b\x32\t.app.Dart\"/\n\x06Player\x12\x10\n\x08userName\x18\x01 \x01(\t\x12\x13\n\x0bplayerIndex\x18\x02 \x01(\x05\"%\n\x05Match\x12\x1c\n\x07players\x18\x01 \x03(\x0b\x32\x0b.app.Player\"+\n\x0cListResponse\x12\x1b\n\x07matches\x18\x01 \x03(\x0b\x32\n.app.Match\"\x0e\n\x0cWatchRequest\"U\n\rWatchResponse\x12\x1b\n\x06player\x18\x01 \x01(\x0b\x32\x0b.app.Player\x12\x18\n\x05\x64\x61rts\x18\x02 \x03(\x0b\x32\t.app.Dart\x12\r\n\x05score\x18\x03 \x01(\x05\x32\xed\x02\n\nDartsMatch\x12\x36\n\x0b\x43reateMatch\x12\x11.app.MatchRequest\x1a\x12.app.MatchResponse\"\x00\x12?\n\x0eRegisterPlayer\x12\x14.app.RegisterRequest\x1a\x15.app.RegisterResponse\"\x00\x12>\n\rFinalizeMatch\x12\x14.app.FinalizeRequest\x1a\x15.app.FinalizeResponse\"\x00\x12\x37\n\x0cProcessVisit\x12\x11.app.VisitRequest\x1a\x12.app.VisitResponse\"\x00\x12\x34\n\x0bListMatches\x12\x10.app.ListRequest\x1a\x11.app.ListResponse\"\x00\x12\x37\n\nWatchMatch\x12\x11.app.WatchRequest\x1a\x12.app.WatchResponse\"\x00\x30\x01\x62\x06proto3'
 )
 
 
@@ -383,9 +383,234 @@ _VISITRESPONSE = _descriptor.Descriptor(
   serialized_end=528,
 )
 
+
+_LISTREQUEST = _descriptor.Descriptor(
+  name='ListRequest',
+  full_name='app.ListRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='matchId', full_name='app.ListRequest.matchId', index=0,
+      number=1, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='playerIndex', full_name='app.ListRequest.playerIndex', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='visit', full_name='app.ListRequest.visit', index=2,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=530,
+  serialized_end=607,
+)
+
+
+_PLAYER = _descriptor.Descriptor(
+  name='Player',
+  full_name='app.Player',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='userName', full_name='app.Player.userName', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='playerIndex', full_name='app.Player.playerIndex', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=609,
+  serialized_end=656,
+)
+
+
+_MATCH = _descriptor.Descriptor(
+  name='Match',
+  full_name='app.Match',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='players', full_name='app.Match.players', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=658,
+  serialized_end=695,
+)
+
+
+_LISTRESPONSE = _descriptor.Descriptor(
+  name='ListResponse',
+  full_name='app.ListResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='matches', full_name='app.ListResponse.matches', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=697,
+  serialized_end=740,
+)
+
+
+_WATCHREQUEST = _descriptor.Descriptor(
+  name='WatchRequest',
+  full_name='app.WatchRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=742,
+  serialized_end=756,
+)
+
+
+_WATCHRESPONSE = _descriptor.Descriptor(
+  name='WatchResponse',
+  full_name='app.WatchResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='player', full_name='app.WatchResponse.player', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='darts', full_name='app.WatchResponse.darts', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='score', full_name='app.WatchResponse.score', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=758,
+  serialized_end=843,
+)
+
 _DART.fields_by_name['multiplier'].enum_type = _DART_DARTMULTIPLIER
 _DART_DARTMULTIPLIER.containing_type = _DART
 _VISITREQUEST.fields_by_name['visit'].message_type = _DART
+_LISTREQUEST.fields_by_name['visit'].message_type = _DART
+_MATCH.fields_by_name['players'].message_type = _PLAYER
+_LISTRESPONSE.fields_by_name['matches'].message_type = _MATCH
+_WATCHRESPONSE.fields_by_name['player'].message_type = _PLAYER
+_WATCHRESPONSE.fields_by_name['darts'].message_type = _DART
 DESCRIPTOR.message_types_by_name['MatchRequest'] = _MATCHREQUEST
 DESCRIPTOR.message_types_by_name['MatchResponse'] = _MATCHRESPONSE
 DESCRIPTOR.message_types_by_name['RegisterRequest'] = _REGISTERREQUEST
@@ -395,6 +620,12 @@ DESCRIPTOR.message_types_by_name['FinalizeResponse'] = _FINALIZERESPONSE
 DESCRIPTOR.message_types_by_name['Dart'] = _DART
 DESCRIPTOR.message_types_by_name['VisitRequest'] = _VISITREQUEST
 DESCRIPTOR.message_types_by_name['VisitResponse'] = _VISITRESPONSE
+DESCRIPTOR.message_types_by_name['ListRequest'] = _LISTREQUEST
+DESCRIPTOR.message_types_by_name['Player'] = _PLAYER
+DESCRIPTOR.message_types_by_name['Match'] = _MATCH
+DESCRIPTOR.message_types_by_name['ListResponse'] = _LISTRESPONSE
+DESCRIPTOR.message_types_by_name['WatchRequest'] = _WATCHREQUEST
+DESCRIPTOR.message_types_by_name['WatchResponse'] = _WATCHRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 MatchRequest = _reflection.GeneratedProtocolMessageType('MatchRequest', (_message.Message,), {
@@ -460,6 +691,48 @@ VisitResponse = _reflection.GeneratedProtocolMessageType('VisitResponse', (_mess
   })
 _sym_db.RegisterMessage(VisitResponse)
 
+ListRequest = _reflection.GeneratedProtocolMessageType('ListRequest', (_message.Message,), {
+  'DESCRIPTOR' : _LISTREQUEST,
+  '__module__' : 'darts_match_pb2'
+  # @@protoc_insertion_point(class_scope:app.ListRequest)
+  })
+_sym_db.RegisterMessage(ListRequest)
+
+Player = _reflection.GeneratedProtocolMessageType('Player', (_message.Message,), {
+  'DESCRIPTOR' : _PLAYER,
+  '__module__' : 'darts_match_pb2'
+  # @@protoc_insertion_point(class_scope:app.Player)
+  })
+_sym_db.RegisterMessage(Player)
+
+Match = _reflection.GeneratedProtocolMessageType('Match', (_message.Message,), {
+  'DESCRIPTOR' : _MATCH,
+  '__module__' : 'darts_match_pb2'
+  # @@protoc_insertion_point(class_scope:app.Match)
+  })
+_sym_db.RegisterMessage(Match)
+
+ListResponse = _reflection.GeneratedProtocolMessageType('ListResponse', (_message.Message,), {
+  'DESCRIPTOR' : _LISTRESPONSE,
+  '__module__' : 'darts_match_pb2'
+  # @@protoc_insertion_point(class_scope:app.ListResponse)
+  })
+_sym_db.RegisterMessage(ListResponse)
+
+WatchRequest = _reflection.GeneratedProtocolMessageType('WatchRequest', (_message.Message,), {
+  'DESCRIPTOR' : _WATCHREQUEST,
+  '__module__' : 'darts_match_pb2'
+  # @@protoc_insertion_point(class_scope:app.WatchRequest)
+  })
+_sym_db.RegisterMessage(WatchRequest)
+
+WatchResponse = _reflection.GeneratedProtocolMessageType('WatchResponse', (_message.Message,), {
+  'DESCRIPTOR' : _WATCHRESPONSE,
+  '__module__' : 'darts_match_pb2'
+  # @@protoc_insertion_point(class_scope:app.WatchResponse)
+  })
+_sym_db.RegisterMessage(WatchResponse)
+
 
 
 _DARTSMATCH = _descriptor.ServiceDescriptor(
@@ -469,8 +742,8 @@ _DARTSMATCH = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=531,
-  serialized_end=785,
+  serialized_start=846,
+  serialized_end=1211,
   methods=[
   _descriptor.MethodDescriptor(
     name='CreateMatch',
@@ -509,6 +782,26 @@ _DARTSMATCH = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_VISITREQUEST,
     output_type=_VISITRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='ListMatches',
+    full_name='app.DartsMatch.ListMatches',
+    index=4,
+    containing_service=None,
+    input_type=_LISTREQUEST,
+    output_type=_LISTRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='WatchMatch',
+    full_name='app.DartsMatch.WatchMatch',
+    index=5,
+    containing_service=None,
+    input_type=_WATCHREQUEST,
+    output_type=_WATCHRESPONSE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),

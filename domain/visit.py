@@ -1,5 +1,6 @@
 from datatype.enums import DartMultiplier
 
+from datetime import datetime
 
 class Dart:
     def __init__(self, multiplier, segment):
@@ -21,10 +22,12 @@ class Dart:
 class Visit:
     def __init__(self):
         self.darts = []   # Limited to 3 Dart elements for most games
+        self.timestamp = datetime.now()
 
     def __init__(self, darts):
-        self.darts = []   # Limited to 3 Dart elements for most games
+        self.darts = []  # Limited to 3 Dart elements for most games
         self.add_darts(darts)
+        self.timestamp = datetime.now()
 
     def add_dart(self, dart):
         self.darts.append(Dart(dart.multiplier, dart.segment))
