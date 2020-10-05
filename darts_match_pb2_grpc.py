@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import app.darts_match_pb2 as darts__match__pb2
+import darts_match_pb2 as darts__match__pb2
 
 
 class DartsMatchStub(object):

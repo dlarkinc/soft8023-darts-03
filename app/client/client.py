@@ -2,8 +2,8 @@ import logging
 
 import grpc
 
-import app.darts_match_pb2 as darts_match_pb2
-import app.darts_match_pb2_grpc as darts_match_pb2_grpc
+import darts_match_pb2 as darts_match_pb2
+import darts_match_pb2_grpc as darts_match_pb2_grpc
 from datatype.enums import DartMultiplier
 
 

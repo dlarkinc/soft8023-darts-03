@@ -3,15 +3,12 @@ import time
 from concurrent import futures
 
 import grpc
-import uuid
 
 from app.gameimpl import x01_match
-from app.darts_match_pb2 import VisitResponse, RegisterResponse, FinalizeResponse, MatchResponse, \
+from darts_match_pb2 import VisitResponse, RegisterResponse, FinalizeResponse, MatchResponse, \
     WatchResponse, Player, Dart
-from app.darts_match_pb2_grpc import DartsMatchServicer, add_DartsMatchServicer_to_server
+from darts_match_pb2_grpc import DartsMatchServicer, add_DartsMatchServicer_to_server
 from app.server.match_registry import MatchRegistry
-from datatype.enums import DartMultiplier
-from datetime import datetime
 from domain import darts_match, visit
 from pattern import object_factory
 
@@ -62,11 +59,12 @@ class DartServer(DartsMatchServicer):
         return MatchResponse(matchId=match_id.bytes)
 
     def WatchMatch(self, request, context):
-        timestamp = datetime.now()
         # get through any older visits
         my_uuid = list(MatchRegistry.get_instance().matches.keys())[0].bytes  # temporary - just get first uuid
         # match = self.registry.get_match(request.matchId)
         match = self.registry.get_match(my_uuid)
+
+        v = 0
         for v in range(0, len(match.match.visits[0])):
             for p in range(0, len(match.match.players)):
                 while len(match.match.visits[p]) < len(match.match.visits[0]):
